@@ -18,6 +18,30 @@ var both = name + " and " + king // Join string together
 var age = 19; // Variable with an int value
 "Your are \(age) years old.In another \(age) years you will be \(age * 2)." // Matchmatics can be done in String Interpolation.
 
+// The backslash followed by a quotation mark is an escape sequence.
+let favoriteQuotation = "Hamlet said, \"To be, or not to be?\""	
+
+// Escape scquence most commonly used for new line
+let startOfAPoem = "Roses are red.\nViolets are blue."
+
+//                                                  Static
+//               Static variables are shared through all instances of a class. When you change the variable ffor a static, that property is now change in all future instances
+
+class Vehicle {
+    var car = "Lexus"
+    static var suv = "Jeep"
+}
+
+// changing nonstatic variable
+Vehicle().car // Lexus
+Vehicle().car = "Mercedes"
+Vehicle().car // Lexus
+
+// changing static variable
+Vehicle.suv // Jeep
+Vehicle.suv = "Hummer"
+Vehicle.suv // Hummer
+
 
 
 //                                                  Float and Double
@@ -83,6 +107,16 @@ for song in songs {
 
 // Empty Array - fill it later
 var songsLater: [String] = []
+
+//                                                  Sets
+//                                                  Use when no order needed or ensure item only appears once
+
+var letters = Set<Character>()
+print("letters is of type Set<Character> with \(letters.count) items.")
+
+letters.insert("a") // letters now contains 1 value of type Character
+
+var favouriteGeneres: Set<String> = ["Rock", "Classical", "Hip-hop"]
 
 //                                                  Dictionaries
 //              Let you access values based on a key you specify e.g. First name, Last name rather than index numbers. Store wide variety like Arrays.
@@ -309,6 +343,16 @@ if albumIsTaylor(name: "Blue") {
     print ("Who made that?!")
 }
 
+    
+//                                                      Guard Statements
+//                                                      Must require condition to be true in order for code after the guard statement to be executed. Always has else clause which is executed if condotion is not true
+    
+    func greet(person: [String: String]) {
+        guard let name = person["name"] else {
+            return
+        }
+        print("Hello \(name)!")
+    }
 
 //                                                      Optionals
 
@@ -764,8 +808,18 @@ let vw = UIView()
     UIView.animate(withDuration: 0.5) { // duration and closure containing the code to be executed as part of the animatioon
         vw.alpha = 0 //closure to adjust the view's alpha (opacity) to 0, which means completely transparent
     }
+    
+// Trailing closure syntax
+let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, ac] (action: UIAlertAction) in // Anytime method expects closure as its final parameter, can eliminate that final parameter and pass it inside braces instead
+        let answer = ac.textFields![0]
+        self.submit(answer: answer.text!)
+    }
 
  
+//                                                                  Tuples
+let http404Error = (404, "Not Found") // Of type (Int, String)
+let (statusCode, statusMessage) = http404Error
+print("My \(statusCode) and \(statusMessage)")
 
 
 //                                                                  Nil
@@ -828,6 +882,23 @@ if errorTypeOptional != nil {
     let nonOptionalErrorType = errorTypeOptional!
     print(nonOptionalErrorType)
 }
+    
+//                                                                      JSON
+    
+    let urlString = "http://localhost:3000/posts/"
+    let url = URL(string: urlString)
+    
+    let decoder = JSONDecoder()
+    struct Post: Codable {
+        let id: Int
+        let author: String
+        let title: String
+    }
+    
+    var posts: [Post] = []
+    var errorMessage = " "
+    
+    
 
 
 //                                                                 Optional Bindings
@@ -1000,9 +1071,18 @@ if smallCat == "cat" {
 4 >= 10
 
 
-//                                                                                                                              Ternary Conditional Operator
-//                                                                                                                              question ? answer 1: answer 2: - Evalaute one of two expressions based on whether a question is true or false
+//                                                                                                     Ternary Conditional Operator
+    //                                                                                                 3 Parts:
+    //                                                                                                 Question with true or false answer
+    //                                                                                                 A value if the answer to the question is true
+    //                                                                                                 A value if the answer to the question is false
+    
+    var largest: Int
+    let a = 15
+    let b = 4
 
+    largest = a > b ? a : b // “You can read it as: "If a > b, assign a to the largest constant; otherwise, assign b." In this case, a is greater than b, so it's assigned to largest.
+    
 
 var itsRaining = true
 var shouldITakeMyUmbrella = (itsRaining ? " yes" : "no")
