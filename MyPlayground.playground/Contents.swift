@@ -808,7 +808,7 @@ let vw = UIView()
     UIView.animate(withDuration: 0.5) { // duration and closure containing the code to be executed as part of the animatioon
         vw.alpha = 0 //closure to adjust the view's alpha (opacity) to 0, which means completely transparent
     }
-    
+
 // Trailing closure syntax
 let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, ac] (action: UIAlertAction) in // Anytime method expects closure as its final parameter, can eliminate that final parameter and pass it inside braces instead
         let answer = ac.textFields![0]
@@ -816,6 +816,7 @@ let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned se
     }
 
  
+
 //                                                                  Tuples
 let http404Error = (404, "Not Found") // Of type (Int, String)
 let (statusCode, statusMessage) = http404Error
