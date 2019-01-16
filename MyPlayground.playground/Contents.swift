@@ -3,7 +3,6 @@ import UIKit
 
 //                                                      Variables
 
-
 var name = "Tim Allen" // Auto detects data type e.g string = Type Ineference
 name = "Tim"  // To change variable just type its given ID
 "Your name is \(name)" // String Interpolation - printing the value
