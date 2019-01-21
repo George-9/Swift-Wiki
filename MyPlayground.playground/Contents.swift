@@ -76,7 +76,11 @@ var outTooLate = true
 outTooLate
 !outTooLate // sets it to false, can also use != to make not equal
 
-
+//                                                  Random Numbers
+let int1 = Int.random(in: 0...10)
+let int2 = Int.random(in: 0..<10)
+let double1 = Double.random(in: 1000...10000)
+let float1 = Float.random(in: -100...100)
 
 //                                                  Boolean
 //                                   Data Type to store if True or False only
