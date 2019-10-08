@@ -1227,3 +1227,18 @@ if (halIsCrazy && halIsFeelingGood && daveHasBeenAGoodBoy) || airlockIsOpen {
     print("There's some hope yet.")
 }
 }
+
+// Swift UI - Basic Property Wrappers
+
+// @State - Storage of the property will be managed by SwiftUI. Whenever the value updates, the View will update the appearance inside the declaration of body. It’s the source of truth for the data inside a View.
+
+// @Binding - A binding property from a state, it can be used to pass value of a state to other View down in the hierarchy using the $ prefix operator.
+// The View that gets the binding will be able to mutate the value and the View that has the state will be updated to reflect the changes in the data.
+// Example, passing down the bind of boolean state to a Switch control that will be updated whenever the user toggles the switch on/off.
+
+// @ObservedObject . This is a property that represent the model in the View. The class needs to conform to ObservableObject protocol and invoke objectWillChange whenever the properties are updated.
+// SwiftUI will observes the changes in the model and update the appearance inside the declaration of the body. In Xcode 11 Beta 5, we can declare the properties with @Published property wrapper for the object to magically publish the update to the View.
+
+// @EnvironmentObject. It acts just like the @ObservedObject , but in this case we can retrieve the object from the deepest child View up to the top ancestor/root View.
+
+// @Published - So it can notify the View when the value is updated. You access the publisher with the $ operator.
