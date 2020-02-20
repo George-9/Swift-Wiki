@@ -1242,3 +1242,8 @@ if (halIsCrazy && halIsFeelingGood && daveHasBeenAGoodBoy) || airlockIsOpen {
 // @EnvironmentObject. It acts just like the @ObservedObject , but in this case we can retrieve the object from the deepest child View up to the top ancestor/root View.
 
 // @Published - So it can notify the View when the value is updated. You access the publisher with the $ operator.
+
+// UInt 8 (Unsigned 8 bit intger)
+// Unsigned can hold a larger positive value and no negative value
+// Use when know value storing will always be non negative
+let Ace: UInt8 = 1
