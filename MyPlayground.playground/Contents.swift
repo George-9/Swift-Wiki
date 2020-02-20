@@ -1262,12 +1262,23 @@ let Ace: UInt8 = 1
 struct Person: Equatable {
     var name: String
     var age: String
+    
+    // If you don’t want to check all properties for equality, or if any of your properties are not also Equatable, then you need to write your own == function like this:
+    static func ==(lhs: Person, rhs: Person) -> Bool {
+        return lhs.name == rhs.name && lhs.age == rhs.age
+    }
+    // Put that inside the Person struct. Because that’s your own function you can make it do any comparisons you like. Swift’s default Equatable implementation will check all properties for equality,
+    // so if you have one property that is guaranteed to be unique adding your own Equatable implementation is a good idea.
 }
 
-// If you don’t want to check all properties for equality, or if any of your properties are not also Equatable, then you need to write your own == function like this:
-static func ==(lhs: Person, rhs: Person) -> Bool {
-    return lhs.name == rhs.name && lhs.age == rhs.age
-}
+// Hashable - The process of applying an algorithm to convert a data item to a value
+// Can be used for searching e.g. "John's shop" is 19873 as hash value
 
-// Put that inside the Person struct. Because that’s your own function you can make it do any comparisons you like. Swift’s default Equatable implementation will check all properties for equality,
-// so if you have one property that is guaranteed to be unique adding your own Equatable implementation is a good idea.
+struct iPad: Hashable {
+    var serialNumber: String
+    var capacity: Int
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(serialNumber)
+    }
+}
