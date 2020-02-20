@@ -24,7 +24,16 @@ let favoriteQuotation = "Hamlet said, \"To be, or not to be?\""
 let startOfAPoem = "Roses are red.\nViolets are blue."
 
 //                                                  Static
-//               Static variables are shared through all instances of a class. When you change the variable ffor a static, that property is now change in all future instances
+//               Static variables are shared through all instances of a class. When you change the variable for a static, that property is now change in all future instances
+//               Static functions are invoked by the class itself, not by an instance. This makes it simple to invoke utility functions without having to manage an object to do that work for you.
+
+class AppUtils {
+    static func appUtility() {
+    }
+}
+
+// We can access static function as AppUtils.appUtility()
+// Static functions can not be overridden.
 
 class Vehicle {
     var car = "Lexus"
@@ -1242,3 +1251,23 @@ if (halIsCrazy && halIsFeelingGood && daveHasBeenAGoodBoy) || airlockIsOpen {
 // @EnvironmentObject. It acts just like the @ObservedObject , but in this case we can retrieve the object from the deepest child View up to the top ancestor/root View.
 
 // @Published - So it can notify the View when the value is updated. You access the publisher with the $ operator.
+
+
+// UInt 8 (Unsigned 8 bit intger)
+// Unsigned can hold a larger positive value and no negative value
+// Use when know value storing will always be non negative
+let Ace: UInt8 = 1
+
+// Equatable Protocol - Allows two objects to be compared using ==
+struct Person: Equatable {
+    var name: String
+    var age: String
+}
+
+// If you don’t want to check all properties for equality, or if any of your properties are not also Equatable, then you need to write your own == function like this:
+static func ==(lhs: Person, rhs: Person) -> Bool {
+    return lhs.name == rhs.name && lhs.age == rhs.age
+}
+
+// Put that inside the Person struct. Because that’s your own function you can make it do any comparisons you like. Swift’s default Equatable implementation will check all properties for equality,
+// so if you have one property that is guaranteed to be unique adding your own Equatable implementation is a good idea.
